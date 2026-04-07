@@ -10,10 +10,10 @@ Repository: https://github.com/Niklp09/colored_concrete
 
 ## License
 
-This mod is licensed under the **GNU General Public License v3.0** — see the LICENSE file for details.
+This mod is licensed under the **GNU General Public License v2.0** — see the LICENSE file for details.
 
 ### License Compatibility
 
-This mod incorporates assets from GPL-2.0 licensed work. GPL-3.0 is compatible with GPL-2.0, so all components remain under copyleft protection.
+This mod incorporates assets from GPL-2.0 licensed work so all components remain under copyleft protection.
 
-**In summary:** All code and assets in this mod are free and open-source. You are free to use, modify, and distribute this mod under the terms of the GNU General Public License v3.0.
+**In summary:** All code and assets in this mod are free and open-source. You are free to use, modify, and distribute this mod under the terms of the GNU General Public License v2.0.
