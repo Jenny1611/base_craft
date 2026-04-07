@@ -17,3 +17,8 @@ This mod is licensed under the **GNU General Public License v2.0** — see the L
 This mod incorporates assets from GPL-2.0 licensed work so all components remain under copyleft protection.
 
 **In summary:** All code and assets in this mod are free and open-source. You are free to use, modify, and distribute this mod under the terms of the GNU General Public License v2.0.
+
+
+## Copyright
+
+© 2026 Jenny1611 — All rights reserved under the GNU General Public License v2.0.
