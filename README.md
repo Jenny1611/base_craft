@@ -2,6 +2,30 @@
 
 BaseCraft adds essential, high-quality building blocks like concrete slabs and stairs to complete your constructions with consistency and style.
 
+## What this mod includes
+
+The following blocks are included (alphabetical order):
+
+### Slabs and stairs
+- Black
+- Blue
+- Brown
+- Darkgrey
+- Green
+- Grey
+- Lightblue
+- Lightgreen
+- Magenta
+- Orange
+- Pink
+- Red
+- Turquoise
+- Violet
+- White
+- Yellow
+
+*See the screenshots for more information*
+
 ## Credits
 
 This mod uses concrete assets from **colored_concrete** by Niklp09, which is licensed under the GNU General Public License v2.0.

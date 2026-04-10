@@ -1,15 +1,15 @@
 stairs = {}
 
--- Node will be called base_craft:stair_<subname>
+-- Node will be called base_craft:<subname>_stair
 function stairs.register_stair(subname, recipeitem, groups, images, description)
-	core.register_node(":base_craft:stair_" .. subname, {
+	core.register_node(":base_craft:" .. subname .. "_stair", {
 		description = description.."\n"..
 			"param2 = facedir rotation (0..23)",
 		drawtype = "nodebox",
 		tiles = images,
 		paramtype = "light",
 		paramtype2 = "facedir",
-		is_ground_content = true,
+		is_ground_content = false,
 		groups = groups,
 		node_box = {
 			type = "fixed",
@@ -19,16 +19,61 @@ function stairs.register_stair(subname, recipeitem, groups, images, description)
 			},
 		},
 	})
+	stairs.register_inner_stair(subname, recipeitem, groups, images, description .. " (inner corner)")
+	stairs.register_outer_stair(subname, recipeitem, groups, images, description .. " (outer corner)")
 end
 
--- Node will be called base_craft:slab_<subname>
+-- Node will be called base_craft:<subname>_inner_corner_stair
+function stairs.register_inner_stair(subname, recipeitem, groups, images, description)
+	core.register_node(":base_craft:" .. subname .. "_inner_corner_stair", {
+		description = description.."\n"..
+			"param2 = facedir rotation (0..23)",
+		drawtype = "nodebox",
+		tiles = images,
+		paramtype = "light",
+		paramtype2 = "facedir",
+		is_ground_content = false,
+		groups = groups,
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
+				{-0.5, 0, 0, 0.5, 0.5, 0.5},
+				{0, 0, -0.5, -0.5, 0.5, 0.5}
+			},
+		},
+	})
+end
+
+-- Node will be called base_craft:<subname>_outer_corner_stair
+function stairs.register_outer_stair(subname, recipeitem, groups, images, description)
+	core.register_node(":base_craft:" .. subname .. "_outer_corner_stair", {
+		description = description.."\n"..
+			"param2 = facedir rotation (0..23)",
+		drawtype = "nodebox",
+		tiles = images,
+		paramtype = "light",
+		paramtype2 = "facedir",
+		is_ground_content = false,
+		groups = groups,
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
+				{-0.5, 0, 0, 0, 0.5, 0.5}
+			},
+		},
+	})
+end
+
+-- Node will be called base_craft:<subname>_slab
 function stairs.register_slab(subname, recipeitem, groups, images, description)
-	core.register_node(":base_craft:slab_" .. subname, {
+	core.register_node(":base_craft:" .. subname .. "_slab", {
 		description = description,
 		drawtype = "nodebox",
 		tiles = images,
 		paramtype = "light",
-		is_ground_content = true,
+		is_ground_content = false,
 		groups = groups,
 		node_box = {
 			type = "fixed",
@@ -47,36 +92,21 @@ function stairs.register_stair_and_slab(subname, recipeitem, groups, images, des
 	stairs.register_slab(subname, recipeitem, groups, images, desc_slab)
 end
 
-stairs.register_stair_and_slab("concrete_black", "base_craft:concrete_black", {cracky=3}, {"concrete_black.png"}, "Black Concrete Stair", "Black Concrete Slab")
+local colors = {
+    "black","blue","brown","darkgrey","green","grey","lightblue",
+    "lightgreen","magenta","orange","pink","red","turquoise","violet",
+    "white","yellow"
+}
 
-stairs.register_stair_and_slab("concrete_blue", "base_craft:concrete_blue", {cracky=3}, {"concrete_blue.png"}, "Blue Concrete Stair", "Blue Concrete Slab")
+local function prettify(name)
+    local s = name:gsub("_", " ")
+    return (s:gsub("(%a)([%w']*)", function(a,b) return a:upper()..b:lower() end))
+end
 
-stairs.register_stair_and_slab("concrete_brown", "base_craft:concrete_brown", {cracky=3}, {"concrete_brown.png"}, "Blue Concrete Stair", "Blue Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_cyan", "base_craft:concrete_cyan", {cracky=3}, {"concrete_cyan.png"}, "Cyan Concrete Stair", "Cyan Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_dark_grey", "base_craft:concrete_dark_grey", {cracky=3}, {"concrete_dark_grey.png"}, "Dark Grey Concrete Stair", "Dark Grey Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_green", "base_craft:concrete_green", {cracky=3}, {"concrete_green.png"}, "Green Concrete Stair", "Green Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_grey", "base_craft:concrete_grey", {cracky=3}, {"concrete_grey.png"}, "Grey Concrete Stair", "Grey Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_lightblue", "base_craft:concrete_lightblue", {cracky=3}, {"concrete_lightblue.png"}, "Lightblue Concrete Stair", "Lightblue Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_lightgreen", "base_craft:concrete_lightgreen", {cracky=3}, {"concrete_lightgreen.png"}, "Lightgreen Concrete Stair", "Lightgreen Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_magenta", "base_craft:concrete_magenta", {cracky=3}, {"concrete_magenta.png"}, "Magenta Concrete Stair", "Magenta Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_orange", "base_craft:concrete_orange", {cracky=3}, {"concrete_orange.png"}, "Orange Concrete Stair", "Orange Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_pink", "base_craft:concrete_pink", {cracky=3}, {"concrete_pink.png"}, "Pink Concrete Stair", "Pink Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_red", "base_craft:concrete_red", {cracky=3}, {"concrete_red.png"}, "Red Concrete Stair", "Red Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_turquoise", "base_craft:concrete_turquoise", {cracky=3}, {"concrete_turquoise.png"}, "Turquoise Concrete Stair", "Turquoise Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_violet", "base_craft:concrete_violet", {cracky=3}, {"concrete_violet.png"}, "Violet Concrete Stair", "Violet Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_white", "base_craft:concrete_white", {cracky=3}, {"concrete_white.png"}, "White Concrete Stair", "White Concrete Slab")
-
-stairs.register_stair_and_slab("concrete_yellow", "base_craft:concrete_yellow", {cracky=3}, {"concrete_yellow.png"}, "Yellow Concrete Stair", "Yellow Concrete Slab")
+for _, c in ipairs(colors) do
+    local subname = c .. "_concrete"
+    local recipeitem = "base_craft:" .. subname
+    local images = { "concrete_" .. c .. ".png" }
+    local base_desc = prettify(subname)
+    stairs.register_stair_and_slab(subname, recipeitem, {cracky=3}, images, base_desc .. " Stair", base_desc .. " Slab")
+end
